@@ -29,9 +29,10 @@ namespace MovieTickets.Data.Services
             return result;
         }
 
-        public Actor GetById(int id)
+        public async Task<Actor> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Actors.FirstOrDefaultAsync(n => n.Id == id);
+            return result;
         }
 
         public Actor Update(int id, Actor newActor)

@@ -7,7 +7,7 @@ namespace MovieTickets.Data.Services
     {
         Task<IEnumerable<Actor>> GetAll();
 
-        Actor GetById(int id);
+        Task<Actor> GetByIdAsync(int id);
 
         Task Add(Actor actor);
 
