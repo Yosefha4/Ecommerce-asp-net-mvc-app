@@ -58,7 +58,7 @@ namespace MovieTickets.Controllers
             }
             return View(actorDetails);
         }
-        // Post:  Actors/Edit
+        // Post:  Actors/Edit/1
         [HttpPost]
         public async Task<IActionResult> Edit(int id,[Bind("Id,FullName,ProfileImgUrl,Bio")] Actor actor)
         {
@@ -71,5 +71,30 @@ namespace MovieTickets.Controllers
 
         }
 
+        // Get:  Actors/Delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(actorDetails);
+        }
+        // Post:  Actors/Delete/1
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null)
+            {
+                return View("NotFound");
+            }
+            await _service.DeleteAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        }
     }
-}

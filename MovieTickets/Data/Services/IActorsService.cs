@@ -13,6 +13,6 @@ namespace MovieTickets.Data.Services
 
         Task<Actor> Update(int id, Actor newActor);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
