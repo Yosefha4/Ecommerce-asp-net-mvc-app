@@ -9,7 +9,7 @@ namespace MovieTickets.Data.Services
 
         Actor GetById(int id);
 
-        void Add(Actor actor);
+        Task Add(Actor actor);
 
         Actor Update(int id, Actor newActor);
 
